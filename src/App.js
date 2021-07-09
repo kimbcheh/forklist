@@ -6,7 +6,9 @@ const { Header, Content, Footer } = Layout
 function App() {
  return (
   <Layout>
-   <Header style={{ backgroundColor: '#fff' }}>Forklist</Header>
+   <Header style={{ backgroundColor: '#fff' }}>
+    <h1>Forklist</h1>
+   </Header>
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
      <Col span={12}>Content Left</Col>
