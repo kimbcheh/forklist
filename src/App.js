@@ -13,7 +13,6 @@ function App() {
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
      <Col xs={24} md={12} style={{ backgroundColor: 'pink' }}>
-      Content Left (form to add restaurant)
       <NewForm />
      </Col>
      <Col xs={24} md={12} style={{ backgroundColor: 'orange' }}>
