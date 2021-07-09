@@ -11,8 +11,12 @@ function App() {
    </Header>
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
-     <Col span={12}>Content Left</Col>
-     <Col span={12}>Content Right</Col>
+     <Col xs={24} md={12} style={{ backgroundColor: 'pink' }}>
+      Content Left (form to add restaurant)
+     </Col>
+     <Col xs={24} md={12} style={{ backgroundColor: 'orange' }}>
+      Content Right (list of restaurant cards)
+     </Col>
     </Row>
    </Content>
    <Footer style={{ backgroundColor: '#fff' }}>Made by Kimberly Cheh</Footer>
