@@ -4,9 +4,17 @@ const { TextArea } = Input
 
 function NewForm() {
  return (
-  <Form name='new'>
+  <Form
+   name='new'
+   labelCol={{
+    span: 4,
+   }}
+   wrapperCol={{
+    span: 16,
+   }}
+  >
    <Form.Item
-    label='Restaurant Name'
+    label='Restaurant'
     name='restaurant'
     rules={[
      { required: true, message: 'Please input the name of the restaurant!' },
@@ -27,7 +35,7 @@ function NewForm() {
     <Input />
    </Form.Item>
    <Form.Item
-    label='Price range'
+    label='Price'
     name='price'
     rules={[
      {
@@ -45,7 +53,7 @@ function NewForm() {
    <Form.Item label='Note (optional)' name='note'>
     <TextArea showCount maxLength={100} />
    </Form.Item>
-   <Form.Item>
+   <Form.Item wrapperCol={{ span: 14, offset: 4 }}>
     <Button type='primary' htmlType='submit'>
      Submit
     </Button>
