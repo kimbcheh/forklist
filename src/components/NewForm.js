@@ -5,6 +5,7 @@ const { TextArea } = Input
 function NewForm() {
  return (
   <Card>
+   <h2>Add a new restaurant</h2>
    <Form name='new' layout='vertical'>
     <Form.Item
      label='Restaurant'
