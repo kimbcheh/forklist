@@ -7,7 +7,10 @@ module.exports = {
    options: {
     lessLoaderOptions: {
      lessOptions: {
-      modifyVars: { '@font-family': 'Inter' },
+      modifyVars: {
+       '@font-family':
+        "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+      },
       javascriptEnabled: true,
      },
     },
