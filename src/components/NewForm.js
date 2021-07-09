@@ -1,5 +1,7 @@
 import { Button, Form, Input, Radio } from 'antd'
 
+const { TextArea } = Input
+
 function NewForm() {
  return (
   <Form name='new'>
@@ -41,7 +43,7 @@ function NewForm() {
     </Radio.Group>
    </Form.Item>
    <Form.Item label='Note (optional)' name='note'>
-    <Input />
+    <TextArea showCount maxLength={100} />
    </Form.Item>
    <Form.Item>
     <Button type='primary' htmlType='submit'>
