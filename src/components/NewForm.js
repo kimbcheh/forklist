@@ -20,7 +20,7 @@ function NewForm() {
      { required: true, message: 'Please input the name of the restaurant!' },
     ]}
    >
-    <Input />
+    <Input placeholder='e.g. Napier Quarter' />
    </Form.Item>
    <Form.Item
     label='Suburb'
@@ -32,7 +32,7 @@ function NewForm() {
      },
     ]}
    >
-    <Input />
+    <Input placeholder='e.g. Fitzroy' />
    </Form.Item>
    <Form.Item
     label='Price'
@@ -51,7 +51,11 @@ function NewForm() {
     </Radio.Group>
    </Form.Item>
    <Form.Item label='Note (optional)' name='note'>
-    <TextArea showCount maxLength={100} />
+    <TextArea
+     showCount
+     maxLength={100}
+     placeholder='e.g. Michelle recommended the chocolate and sea salt brownie'
+    />
    </Form.Item>
    <Form.Item wrapperCol={{ span: 14, offset: 4 }}>
     <Button type='primary' htmlType='submit'>
