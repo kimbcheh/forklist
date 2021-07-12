@@ -1,4 +1,5 @@
 import './App.less'
+import { useState } from 'react'
 import NewForm from './components/NewForm'
 import RestaurantList from './components/RestaurantList'
 import { Col, Layout, Row } from 'antd'
@@ -8,16 +9,11 @@ const { Header, Content, Footer } = Layout
 function App() {
  let placeholderData = [
   {
-   restaurant: 'Napier Quarter',
-   suburb: 'Fitzroy',
-   price: '$$',
-   notes: 'Michelle recommended the chocolate and sea salt brownie',
-  },
-  {
    restaurant: 'Bakemono Bakers',
    suburb: 'CBD',
    price: '$',
-   notes: '',
+   notes:
+    'Belinda recommended the garlic cream cheese bread and take home matcha latte kit',
   },
   {
    restaurant: 'Marko',
@@ -26,24 +22,15 @@ function App() {
    notes: '',
   },
   {
-   restaurant: 'Saint Dreux',
-   suburb: 'CBD',
-   price: '$',
-   notes: 'For wagyu katsu sandos',
-  },
-  {
-   restaurant: 'Auterra Wine Bar',
-   suburb: 'CBD',
-   price: '$$',
-   notes: '',
-  },
-  {
-   restaurant: 'Palermo',
+   restaurant: 'Aru',
    suburb: 'CBD',
    price: '$$$',
-   notes: 'For Argentinian BBQ',
+   notes: 'Bianca recommended the dry aged duck and claypot rice',
   },
  ]
+
+ const [data, setData] = useState([...placeholderData])
+
  return (
   <Layout>
    <Header style={{ backgroundColor: '#fff' }}>
