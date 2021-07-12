@@ -1,5 +1,6 @@
 import './App.less'
 import NewForm from './components/NewForm'
+import RestaurantList from './components/RestaurantList'
 import { Col, Layout, Row } from 'antd'
 
 const { Header, Content, Footer } = Layout
@@ -16,6 +17,7 @@ function App() {
       <NewForm />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
+      <RestaurantList />
       Content Right (list of restaurant cards)
      </Col>
     </Row>
