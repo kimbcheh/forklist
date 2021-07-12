@@ -4,7 +4,7 @@ function RestaurantList() {
  return (
   <div>
    <p>RestaurantList component</p>
-   <Card title='Napier Quarter'>
+   <Card title='Napier Quarter' actions={[<p>Edit</p>, <p>Remove</p>]}>
     <p>Michelle recommended the chocolate and sea salt brownie</p>
     <div>
      <Tag color='purple'>Fitzroy</Tag> <Tag color='green'>$$</Tag>
