@@ -48,6 +48,7 @@ function RestaurantList() {
     {placeholderData.map((item) => {
      return (
       <Card
+       key={item.restaurant}
        title={item.restaurant}
        actions={[<EditOutlined />, <DeleteOutlined />]}
       >
