@@ -3,8 +3,8 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList() {
  return (
-  <div>
-   <p>RestaurantList component</p>
+  <Card>
+   <h2>Restaurant List</h2>
    <Card
     title='Napier Quarter'
     actions={[<EditOutlined />, <DeleteOutlined />]}
@@ -25,7 +25,7 @@ function RestaurantList() {
      <Tag color='purple'>South Melbourne</Tag> <Tag color='green'>$</Tag>
     </div>
    </Card>
-  </div>
+  </Card>
  )
 }
 
