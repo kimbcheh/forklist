@@ -10,10 +10,10 @@ function RestaurantList({ data }) {
      return (
       <Card
        key={item.restaurant}
-       title={item.restaurant}
        actions={[<EditOutlined />, <DeleteOutlined />]}
       >
-       <p>{item.notes}</p>
+       <p style={{ fontWeight: 600 }}>✶ {item.restaurant}</p>
+       <p style={{ fontStyle: 'italic' }}>{item.notes}</p>
        <div>
         <Tag color='purple'>{item.suburb}</Tag>{' '}
         <Tag color='green'>{item.price}</Tag>
