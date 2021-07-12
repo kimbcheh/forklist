@@ -1,10 +1,49 @@
 import './App.less'
 import NewForm from './components/NewForm'
+import RestaurantList from './components/RestaurantList'
 import { Col, Layout, Row } from 'antd'
 
 const { Header, Content, Footer } = Layout
 
 function App() {
+ let placeholderData = [
+  {
+   restaurant: 'Napier Quarter',
+   suburb: 'Fitzroy',
+   price: '$$',
+   notes: 'Michelle recommended the chocolate and sea salt brownie',
+  },
+  {
+   restaurant: 'Bakemono Bakers',
+   suburb: 'CBD',
+   price: '$',
+   notes: '',
+  },
+  {
+   restaurant: 'Marko',
+   suburb: 'South Melbourne',
+   price: '$',
+   notes: '',
+  },
+  {
+   restaurant: 'Saint Dreux',
+   suburb: 'CBD',
+   price: '$',
+   notes: 'For wagyu katsu sandos',
+  },
+  {
+   restaurant: 'Auterra Wine Bar',
+   suburb: 'CBD',
+   price: '$$',
+   notes: '',
+  },
+  {
+   restaurant: 'Palermo',
+   suburb: 'CBD',
+   price: '$$$',
+   notes: 'For Argentinian BBQ',
+  },
+ ]
  return (
   <Layout>
    <Header style={{ backgroundColor: '#fff' }}>
@@ -16,7 +55,7 @@ function App() {
       <NewForm />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      Content Right (list of restaurant cards)
+      <RestaurantList data={placeholderData} />
      </Col>
     </Row>
    </Content>
