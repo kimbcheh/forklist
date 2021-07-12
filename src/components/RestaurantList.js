@@ -1,31 +1,64 @@
 import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
+let placeholderData = [
+ {
+  restaurant: 'Napier Quarter',
+  suburb: 'Fitzroy',
+  price: '$$',
+  notes: 'Michelle recommended the chocolate and sea salt brownie',
+ },
+ {
+  restaurant: 'Bakemono Bakers',
+  suburb: 'CBD',
+  price: '$',
+  notes: '',
+ },
+ {
+  restaurant: 'Marko',
+  suburb: 'South Melbourne',
+  price: '$',
+  notes: '',
+ },
+ {
+  restaurant: 'Saint Dreux',
+  suburb: 'CBD',
+  price: '$',
+  notes: 'For wagyu katsu sandos',
+ },
+ {
+  restaurant: 'Auterra Wine Bar',
+  suburb: 'CBD',
+  price: '$$',
+  notes: '',
+ },
+ {
+  restaurant: 'Palermo',
+  suburb: 'CBD',
+  price: '$$$',
+  notes: 'For Argentinian BBQ',
+ },
+]
+
 function RestaurantList() {
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
-    <Card
-     title='Napier Quarter'
-     actions={[<EditOutlined />, <DeleteOutlined />]}
-    >
-     <p>Michelle recommended the chocolate and sea salt brownie</p>
-     <div>
-      <Tag color='purple'>Fitzroy</Tag> <Tag color='green'>$$</Tag>
-     </div>
-    </Card>
-    <Card title='Aru' actions={[<EditOutlined />, <DeleteOutlined />]}>
-     <p>Khanh Nguyen's new restaurant</p>
-     <div>
-      <Tag color='purple'>CBD</Tag> <Tag color='green'>$$$</Tag>
-     </div>
-    </Card>
-    <Card title='Marko' actions={[<EditOutlined />, <DeleteOutlined />]}>
-     <div>
-      <Tag color='purple'>South Melbourne</Tag> <Tag color='green'>$</Tag>
-     </div>
-    </Card>
+    {placeholderData.map((item) => {
+     return (
+      <Card
+       title={item.restaurant}
+       actions={[<EditOutlined />, <DeleteOutlined />]}
+      >
+       <p>{item.notes}</p>
+       <div>
+        <Tag color='purple'>{item.suburb}</Tag>{' '}
+        <Tag color='green'>{item.price}</Tag>
+       </div>
+      </Card>
+     )
+    })}
    </Space>
   </Card>
  )
