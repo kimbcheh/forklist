@@ -14,6 +14,17 @@ function RestaurantList() {
      <Tag color='purple'>Fitzroy</Tag> <Tag color='green'>$$</Tag>
     </div>
    </Card>
+   <Card title='Aru' actions={[<EditOutlined />, <DeleteOutlined />]}>
+    <p>Khanh Nguyen's new restaurant</p>
+    <div>
+     <Tag color='purple'>CBD</Tag> <Tag color='green'>$$$</Tag>
+    </div>
+   </Card>
+   <Card title='Marko' actions={[<EditOutlined />, <DeleteOutlined />]}>
+    <div>
+     <Tag color='purple'>South Melbourne</Tag> <Tag color='green'>$</Tag>
+    </div>
+   </Card>
   </div>
  )
 }
