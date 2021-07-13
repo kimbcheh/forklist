@@ -35,6 +35,23 @@ function NewForm({ setData }) {
      <Input placeholder='e.g. Fitzroy' />
     </Form.Item>
     <Form.Item
+     label='Type'
+     name='type'
+     rules={[
+      {
+       required: true,
+       message: 'Please select the type of restaurant!',
+      },
+     ]}
+    >
+     <Radio.Group>
+      <Radio value={'Restaurant'}>Restaurant</Radio>
+      <Radio value={'Cafe'}>Cafe</Radio>
+      <Radio value={'Bar'}>Bar</Radio>
+      <Radio value={'Dessert'}>Dessert</Radio>
+     </Radio.Group>
+    </Form.Item>
+    <Form.Item
      label='Price'
      name='price'
      rules={[
@@ -49,6 +66,19 @@ function NewForm({ setData }) {
       <Radio value={'$$'}>$$</Radio>
       <Radio value={'$$$'}>$$$</Radio>
      </Radio.Group>
+    </Form.Item>
+    <Form.Item
+     label='Link'
+     name='link'
+     type='url'
+     rules={[
+      {
+       type: 'url',
+       message: 'Please input a valid URL!',
+      },
+     ]}
+    >
+     <Input placeholder='e.g. http://napierquarter.com.au/' />
     </Form.Item>
     <Form.Item label='Notes' name='notes'>
      <TextArea
