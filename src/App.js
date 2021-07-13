@@ -19,7 +19,7 @@ function App() {
    restaurant: 'Marko',
    suburb: 'South Melbourne',
    price: '$',
-   notes: '',
+   notes: undefined,
   },
   {
    restaurant: 'Aru',
@@ -39,7 +39,7 @@ function App() {
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
      <Col xs={24} lg={12} style={{ backgroundColor: 'pink' }}>
-      <NewForm />
+      <NewForm setData={setData} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
       <RestaurantList data={placeholderData} />

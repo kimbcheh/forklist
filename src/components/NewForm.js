@@ -1,26 +1,16 @@
-import { useState } from 'react'
 import { Button, Card, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
-function NewForm() {
- const [formData, setFormData] = useState()
-
+function NewForm({ setData }) {
  function onFinish(values) {
   console.log(values)
- }
- function onValuesChange(changedValues, allValues) {
-  setFormData(allValues)
+  setData((prevData) => [...prevData, values])
  }
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <Form
-    name='new'
-    layout='vertical'
-    onValuesChange={onValuesChange}
-    onFinish={onFinish}
-   >
+   <Form name='new' layout='vertical' onFinish={onFinish}>
     <Form.Item
      label='Restaurant'
      name='restaurant'
