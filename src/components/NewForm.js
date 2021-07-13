@@ -3,10 +3,21 @@ import { Button, Card, Form, Input, Radio } from 'antd'
 const { TextArea } = Input
 
 function NewForm() {
+ function onFinish(values) {
+  console.log(values)
+ }
+ function onValuesChange(changedValues, allValues) {
+  console.log(allValues)
+ }
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <Form name='new' layout='vertical'>
+   <Form
+    name='new'
+    layout='vertical'
+    onValuesChange={onValuesChange}
+    onFinish={onFinish}
+   >
     <Form.Item
      label='Restaurant'
      name='restaurant'
