@@ -3,14 +3,16 @@ import { Button, Card, Form, Input, Radio } from 'antd'
 const { TextArea } = Input
 
 function NewForm({ setData }) {
+ const [form] = Form.useForm()
  function onFinish(values) {
   console.log(values)
   setData((prevData) => [...prevData, values])
+  form.resetFields()
  }
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <Form name='new' layout='vertical' onFinish={onFinish}>
+   <Form name='new' form={form} layout='vertical' onFinish={onFinish}>
     <Form.Item
      label='Restaurant'
      name='restaurant'
