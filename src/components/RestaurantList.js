@@ -12,7 +12,18 @@ function RestaurantList({ data }) {
        key={item.restaurant}
        actions={[<EditOutlined />, <DeleteOutlined />]}
       >
-       <p style={{ fontWeight: 600 }}> {item.restaurant}</p>
+       {item.link ? (
+        <a
+         href={item.link}
+         style={{ fontWeight: 600, color: 'black' }}
+         target='_blank'
+         rel='noopener noreferrer'
+        >
+         {item.restaurant} &#x2197;
+        </a>
+       ) : (
+        <p style={{ fontWeight: 600 }}> {item.restaurant}</p>
+       )}
        <p style={{ fontStyle: 'italic' }}>{item.notes}</p>
        <div>
         <Tag>{item.suburb}</Tag> <Tag color='green'>{item.price}</Tag>

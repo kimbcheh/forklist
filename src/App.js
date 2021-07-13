@@ -22,7 +22,7 @@ function App() {
    suburb: 'South Melbourne',
    type: 'Restaurant',
    price: '$',
-   link: 'https://www.instagram.com/eatmarko/',
+   link: undefined,
    notes: undefined,
   },
   {
