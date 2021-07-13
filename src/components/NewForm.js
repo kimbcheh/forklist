@@ -2,11 +2,15 @@ import { Button, Card, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
-function NewForm() {
+function NewForm({ setData }) {
+ function onFinish(values) {
+  console.log(values)
+  setData((prevData) => [...prevData, values])
+ }
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <Form name='new' layout='vertical'>
+   <Form name='new' layout='vertical' onFinish={onFinish}>
     <Form.Item
      label='Restaurant'
      name='restaurant'
@@ -39,9 +43,9 @@ function NewForm() {
      ]}
     >
      <Radio.Group>
-      <Radio value={1}>$</Radio>
-      <Radio value={2}>$$</Radio>
-      <Radio value={3}>$$$</Radio>
+      <Radio value={'$'}>$</Radio>
+      <Radio value={'$$'}>$$</Radio>
+      <Radio value={'$$$'}>$$$</Radio>
      </Radio.Group>
     </Form.Item>
     <Form.Item label='Notes' name='notes'>
