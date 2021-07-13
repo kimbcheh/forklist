@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { Button, Card, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
 function NewForm() {
+ const [formData, setFormData] = useState()
+
  function onFinish(values) {
   console.log(values)
  }
  function onValuesChange(changedValues, allValues) {
-  console.log(allValues)
+  setFormData(allValues)
  }
  return (
   <Card>
