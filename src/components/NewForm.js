@@ -43,9 +43,9 @@ function NewForm({ setData }) {
      ]}
     >
      <Radio.Group>
-      <Radio value={1}>$</Radio>
-      <Radio value={2}>$$</Radio>
-      <Radio value={3}>$$$</Radio>
+      <Radio value={'$'}>$</Radio>
+      <Radio value={'$$'}>$$</Radio>
+      <Radio value={'$$$'}>$$$</Radio>
      </Radio.Group>
     </Form.Item>
     <Form.Item label='Notes' name='notes'>
