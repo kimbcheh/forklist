@@ -42,7 +42,7 @@ function App() {
       <NewForm setData={setData} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      <RestaurantList data={placeholderData} />
+      <RestaurantList data={data} />
      </Col>
     </Row>
    </Content>
