@@ -18,6 +18,10 @@ function NewForm({ setData }) {
      name='restaurant'
      rules={[
       { required: true, message: 'Please input the name of the restaurant!' },
+      {
+       whitespace: true,
+       message: 'Please input the name of the restaurant!',
+      },
      ]}
     >
      <Input placeholder='e.g. Napier Quarter' />
@@ -28,6 +32,10 @@ function NewForm({ setData }) {
      rules={[
       {
        required: true,
+       message: 'Please input the suburb where the restaurant is located!',
+      },
+      {
+       whitespace: true,
        message: 'Please input the suburb where the restaurant is located!',
       },
      ]}
