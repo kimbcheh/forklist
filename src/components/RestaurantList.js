@@ -26,7 +26,9 @@ function RestaurantList({ data }) {
        )}
        <p style={{ fontStyle: 'italic' }}>{item.notes}</p>
        <div>
-        <Tag>{item.suburb}</Tag> <Tag color='green'>{item.price}</Tag>
+        <Tag>{item.suburb}</Tag>
+        <Tag color='blue'>{item.type}</Tag>
+        <Tag color='green'>{item.price}</Tag>
        </div>
       </Card>
      )
