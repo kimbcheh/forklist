@@ -2,14 +2,24 @@ import TypeEmoji from './TypeEmoji'
 import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
-function RestaurantList({ data }) {
+function RestaurantList({ data, deleteItem }) {
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
     {data.map((item) => {
      return (
-      <Card key={item.id} actions={[<EditOutlined />, <DeleteOutlined />]}>
+      <Card
+       key={item.id}
+       actions={[
+        <EditOutlined />,
+        <DeleteOutlined
+         onClick={() => {
+          deleteItem(item.id)
+         }}
+        />,
+       ]}
+      >
        <Space>
         <TypeEmoji type={item.type} />
         {item.link ? (
