@@ -1,5 +1,5 @@
 import TypeEmoji from './TypeEmoji'
-import { Card, Space, Tag } from 'antd'
+import { Card, Popconfirm, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem }) {
@@ -13,11 +13,16 @@ function RestaurantList({ data, deleteItem }) {
        key={item.id}
        actions={[
         <EditOutlined />,
-        <DeleteOutlined
-         onClick={() => {
+        <Popconfirm
+         title='Are you sure to delete this restaurant?'
+         onConfirm={() => {
           deleteItem(item.id)
          }}
-        />,
+         okText='Yes'
+         cancelText='No'
+        >
+         <DeleteOutlined />
+        </Popconfirm>,
        ]}
       >
        <Space>
