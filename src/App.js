@@ -11,21 +11,30 @@ function App() {
   {
    restaurant: 'Bakemono Bakers',
    suburb: 'CBD',
+   type: 'Cafe',
    price: '$',
+   link: 'https://www.bakemonobakers.com.au/',
    notes:
     'Belinda recommended the garlic cream cheese bread and take home matcha latte kit',
+   id: 'placeholder1',
   },
   {
    restaurant: 'Marko',
    suburb: 'South Melbourne',
+   type: 'Restaurant',
    price: '$',
+   link: undefined,
    notes: undefined,
+   id: 'placeholder2',
   },
   {
    restaurant: 'Aru',
    suburb: 'CBD',
+   type: 'Restaurant',
    price: '$$$',
+   link: 'https://www.broadsheet.com.au/melbourne/restaurants/aru-dining',
    notes: 'Bianca recommended the dry aged duck and claypot rice',
+   id: 'placeholder3',
   },
  ]
 

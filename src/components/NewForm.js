@@ -1,21 +1,29 @@
+import { nanoid } from 'nanoid'
 import { Button, Card, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
 function NewForm({ setData }) {
+ const [form] = Form.useForm()
  function onFinish(values) {
+  values.id = nanoid(10)
   console.log(values)
   setData((prevData) => [...prevData, values])
+  form.resetFields()
  }
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <Form name='new' layout='vertical' onFinish={onFinish}>
+   <Form name='new' form={form} layout='vertical' onFinish={onFinish}>
     <Form.Item
      label='Restaurant'
      name='restaurant'
      rules={[
       { required: true, message: 'Please input the name of the restaurant!' },
+      {
+       whitespace: true,
+       message: 'Please input the name of the restaurant!',
+      },
      ]}
     >
      <Input placeholder='e.g. Napier Quarter' />
@@ -28,9 +36,30 @@ function NewForm({ setData }) {
        required: true,
        message: 'Please input the suburb where the restaurant is located!',
       },
+      {
+       whitespace: true,
+       message: 'Please input the suburb where the restaurant is located!',
+      },
      ]}
     >
      <Input placeholder='e.g. Fitzroy' />
+    </Form.Item>
+    <Form.Item
+     label='Type'
+     name='type'
+     rules={[
+      {
+       required: true,
+       message: 'Please select the type of restaurant!',
+      },
+     ]}
+    >
+     <Radio.Group>
+      <Radio value={'Restaurant'}>Restaurant</Radio>
+      <Radio value={'Cafe'}>Cafe</Radio>
+      <Radio value={'Bar'}>Bar</Radio>
+      <Radio value={'Dessert'}>Dessert</Radio>
+     </Radio.Group>
     </Form.Item>
     <Form.Item
      label='Price'
@@ -47,6 +76,19 @@ function NewForm({ setData }) {
       <Radio value={'$$'}>$$</Radio>
       <Radio value={'$$$'}>$$$</Radio>
      </Radio.Group>
+    </Form.Item>
+    <Form.Item
+     label='Link'
+     name='link'
+     type='url'
+     rules={[
+      {
+       type: 'url',
+       message: 'Please input a valid URL!',
+      },
+     ]}
+    >
+     <Input placeholder='e.g. http://napierquarter.com.au/' />
     </Form.Item>
     <Form.Item label='Notes' name='notes'>
      <TextArea
