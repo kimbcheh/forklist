@@ -1,3 +1,4 @@
+import TypeEmoji from './TypeEmoji'
 import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
@@ -12,18 +13,21 @@ function RestaurantList({ data }) {
        key={item.restaurant}
        actions={[<EditOutlined />, <DeleteOutlined />]}
       >
-       {item.link ? (
-        <a
-         href={item.link}
-         style={{ fontWeight: 600, color: 'black' }}
-         target='_blank'
-         rel='noopener noreferrer'
-        >
-         {item.restaurant} &#x2197;
-        </a>
-       ) : (
-        <p style={{ fontWeight: 600 }}> {item.restaurant}</p>
-       )}
+       <Space>
+        <TypeEmoji type={item.type} />
+        {item.link ? (
+         <a
+          href={item.link}
+          style={{ fontWeight: 600, color: 'black' }}
+          target='_blank'
+          rel='noopener noreferrer'
+         >
+          {item.restaurant} &#x2197;
+         </a>
+        ) : (
+         <p style={{ fontWeight: 600, display: 'inline' }}>{item.restaurant}</p>
+        )}
+       </Space>
        <p style={{ fontStyle: 'italic' }}>{item.notes}</p>
        <div>
         <Tag>{item.suburb}</Tag>
