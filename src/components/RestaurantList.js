@@ -9,10 +9,7 @@ function RestaurantList({ data }) {
     <h2>Restaurant List</h2>
     {data.map((item) => {
      return (
-      <Card
-       key={item.restaurant}
-       actions={[<EditOutlined />, <DeleteOutlined />]}
-      >
+      <Card key={item.id} actions={[<EditOutlined />, <DeleteOutlined />]}>
        <Space>
         <TypeEmoji type={item.type} />
         {item.link ? (

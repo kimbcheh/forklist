@@ -16,6 +16,7 @@ function App() {
    link: 'https://www.bakemonobakers.com.au/',
    notes:
     'Belinda recommended the garlic cream cheese bread and take home matcha latte kit',
+   id: 'placeholder1',
   },
   {
    restaurant: 'Marko',
@@ -24,6 +25,7 @@ function App() {
    price: '$',
    link: undefined,
    notes: undefined,
+   id: 'placeholder2',
   },
   {
    restaurant: 'Aru',
@@ -32,6 +34,7 @@ function App() {
    price: '$$$',
    link: 'https://www.broadsheet.com.au/melbourne/restaurants/aru-dining',
    notes: 'Bianca recommended the dry aged duck and claypot rice',
+   id: 'placeholder3',
   },
  ]
 
