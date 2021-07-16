@@ -45,6 +45,16 @@ function App() {
   setData(remainingItems)
  }
 
+ function editItem(id, editData) {
+  const updatedItems = data.map((item) => {
+   if (item.id === id) {
+    return { ...editData, id: item.id }
+   }
+   return item
+  })
+  setData(updatedItems)
+ }
+
  return (
   <Layout>
    <Header style={{ backgroundColor: '#fff' }}>
@@ -56,7 +66,7 @@ function App() {
       <NewForm setData={setData} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      <RestaurantList data={data} deleteItem={deleteItem} />
+      <RestaurantList data={data} deleteItem={deleteItem} editItem={editItem} />
      </Col>
     </Row>
    </Content>
