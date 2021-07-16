@@ -45,6 +45,11 @@ function App() {
   setData(remainingItems)
  }
 
+ function editItem(id, editData) {
+  console.log(id)
+  console.log(editData)
+ }
+
  return (
   <Layout>
    <Header style={{ backgroundColor: '#fff' }}>
@@ -56,7 +61,7 @@ function App() {
       <NewForm setData={setData} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      <RestaurantList data={data} deleteItem={deleteItem} />
+      <RestaurantList data={data} deleteItem={deleteItem} editItem={editItem} />
      </Col>
     </Row>
    </Content>
