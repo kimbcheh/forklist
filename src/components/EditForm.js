@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Form, Input, Modal, Radio } from 'antd'
 
 const { TextArea } = Input
@@ -11,8 +11,14 @@ function EditForm({
 }) {
  const [form] = Form.useForm()
 
+ const firstRender = useRef(true)
+
  useEffect(() => {
-  form.setFieldsValue(modalItem)
+  if (firstRender.current) {
+   firstRender.current = false
+  } else {
+   form.setFieldsValue(modalItem)
+  }
  }, [form, modalItem])
 
  const handleEditOk = () => {
