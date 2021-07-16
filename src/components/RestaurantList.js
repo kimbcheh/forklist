@@ -1,7 +1,7 @@
 import TypeEmoji from './TypeEmoji'
 import EditForm from './EditForm'
 import { useState } from 'react'
-import { Card, Modal, Popconfirm, Space, Tag } from 'antd'
+import { Card, Popconfirm, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem, editItem }) {
