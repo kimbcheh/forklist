@@ -5,8 +5,11 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem }) {
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+ const [modalItem, setModalItem] = useState(data[0])
 
- const showEditModal = () => {
+ const showEditModal = (id) => {
+  let dataItem = data.find((item) => item.id === id)
+  setModalItem(dataItem)
   setIsEditModalVisible(true)
  }
 
@@ -27,7 +30,7 @@ function RestaurantList({ data, deleteItem }) {
       <Card
        key={item.id}
        actions={[
-        <EditOutlined onClick={showEditModal} />,
+        <EditOutlined onClick={() => showEditModal(item.id)} />,
         <Popconfirm
          title='Are you sure to delete this restaurant?'
          onConfirm={() => {
@@ -64,14 +67,15 @@ function RestaurantList({ data, deleteItem }) {
       </Card>
      )
     })}
-    <Modal
-     visible={isEditModalVisible}
-     onOk={handleEditOk}
-     onCancel={handleEditCancel}
-    >
-     <p>Edit Modal</p>
-    </Modal>
    </Space>
+   <Modal
+    title={`Edit: ${modalItem.restaurant}`}
+    visible={isEditModalVisible}
+    onOk={handleEditOk}
+    onCancel={handleEditCancel}
+   >
+    <p>{modalItem.restaurant}</p>
+   </Modal>
   </Card>
  )
 }
