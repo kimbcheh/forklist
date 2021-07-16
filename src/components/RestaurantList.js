@@ -1,9 +1,10 @@
 import TypeEmoji from './TypeEmoji'
+import EditForm from './EditForm'
 import { useState } from 'react'
 import { Card, Modal, Popconfirm, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
-function RestaurantList({ data, deleteItem }) {
+function RestaurantList({ data, deleteItem, editItem }) {
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
 
@@ -11,14 +12,6 @@ function RestaurantList({ data, deleteItem }) {
   let dataItem = data.find((item) => item.id === id)
   setModalItem(dataItem)
   setIsEditModalVisible(true)
- }
-
- const handleEditOk = () => {
-  setIsEditModalVisible(false)
- }
-
- const handleEditCancel = () => {
-  setIsEditModalVisible(false)
  }
 
  return (
@@ -68,14 +61,12 @@ function RestaurantList({ data, deleteItem }) {
      )
     })}
    </Space>
-   <Modal
-    title={`Edit: ${modalItem.restaurant}`}
-    visible={isEditModalVisible}
-    onOk={handleEditOk}
-    onCancel={handleEditCancel}
-   >
-    <p>{modalItem.restaurant}</p>
-   </Modal>
+   <EditForm
+    modalItem={modalItem}
+    isEditModalVisible={isEditModalVisible}
+    setIsEditModalVisible={setIsEditModalVisible}
+    editItem={editItem}
+   />
   </Card>
  )
 }
