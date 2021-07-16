@@ -1,8 +1,23 @@
 import TypeEmoji from './TypeEmoji'
-import { Card, Popconfirm, Space, Tag } from 'antd'
+import { useState } from 'react'
+import { Card, Modal, Popconfirm, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem }) {
+ const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+
+ const showEditModal = () => {
+  setIsEditModalVisible(true)
+ }
+
+ const handleEditOk = () => {
+  setIsEditModalVisible(false)
+ }
+
+ const handleEditCancel = () => {
+  setIsEditModalVisible(false)
+ }
+
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
@@ -12,7 +27,7 @@ function RestaurantList({ data, deleteItem }) {
       <Card
        key={item.id}
        actions={[
-        <EditOutlined />,
+        <EditOutlined onClick={showEditModal} />,
         <Popconfirm
          title='Are you sure to delete this restaurant?'
          onConfirm={() => {
@@ -49,6 +64,13 @@ function RestaurantList({ data, deleteItem }) {
       </Card>
      )
     })}
+    <Modal
+     visible={isEditModalVisible}
+     onOk={handleEditOk}
+     onCancel={handleEditCancel}
+    >
+     <p>Edit Modal</p>
+    </Modal>
    </Space>
   </Card>
  )
