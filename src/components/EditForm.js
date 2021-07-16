@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Form, Input, Modal, Radio } from 'antd'
 
 const { TextArea } = Input
@@ -9,6 +10,13 @@ function EditForm({
  editItem,
 }) {
  const [form] = Form.useForm()
+
+ const defaultValues = modalItem
+
+ useEffect(() => {
+  form.setFieldsValue(defaultValues)
+ }, [form, defaultValues])
+
  const handleEditOk = () => {
   form.validateFields().then((values) => {
    editItem(modalItem.id, values)
@@ -27,13 +35,7 @@ function EditForm({
    onCancel={handleEditCancel}
    destroyOnClose
   >
-   <Form
-    form={form}
-    name='edit'
-    layout='vertical'
-    initialValues={modalItem}
-    preserve={false}
-   >
+   <Form form={form} name='edit' layout='vertical' preserve={false}>
     <Form.Item
      label='Restaurant'
      name='restaurant'
