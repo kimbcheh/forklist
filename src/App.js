@@ -46,8 +46,13 @@ function App() {
  }
 
  function editItem(id, editData) {
-  console.log(id)
-  console.log(editData)
+  const updatedItems = data.map((item) => {
+   if (item.id === id) {
+    return { ...editData, id: item.id }
+   }
+   return item
+  })
+  setData(updatedItems)
  }
 
  return (
