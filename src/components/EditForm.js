@@ -11,11 +11,9 @@ function EditForm({
 }) {
  const [form] = Form.useForm()
 
- const defaultValues = modalItem
-
  useEffect(() => {
-  form.setFieldsValue(defaultValues)
- }, [form, defaultValues])
+  form.setFieldsValue(modalItem)
+ }, [form, modalItem])
 
  const handleEditOk = () => {
   form.validateFields().then((values) => {
@@ -35,7 +33,13 @@ function EditForm({
    onCancel={handleEditCancel}
    destroyOnClose
   >
-   <Form form={form} name='edit' layout='vertical' preserve={false}>
+   <Form
+    form={form}
+    name='edit'
+    layout='vertical'
+    preserve={false}
+    initialValues={modalItem}
+   >
     <Form.Item
      label='Restaurant'
      name='restaurant'
