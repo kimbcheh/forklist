@@ -7,6 +7,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem, editItem }) {
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+ const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
 
  const showEditModal = (id) => {
