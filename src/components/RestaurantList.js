@@ -1,12 +1,20 @@
 import TypeEmoji from './TypeEmoji'
+import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
 import { useState } from 'react'
-import { Card, Popconfirm, Space, Tag } from 'antd'
+import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem, editItem }) {
+ const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
+
+ const showDeleteModal = (id) => {
+  let dataItem = data.find((item) => item.id === id)
+  setModalItem(dataItem)
+  setIsDeleteModalVisible(true)
+ }
 
  const showEditModal = (id) => {
   let dataItem = data.find((item) => item.id === id)
@@ -24,16 +32,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
        key={item.id}
        actions={[
         <EditOutlined onClick={() => showEditModal(item.id)} />,
-        <Popconfirm
-         title='Are you sure to delete this restaurant?'
-         onConfirm={() => {
-          deleteItem(item.id)
-         }}
-         okText='Yes'
-         cancelText='No'
-        >
-         <DeleteOutlined />
-        </Popconfirm>,
+        <DeleteOutlined onClick={() => showDeleteModal(item.id)} />,
        ]}
       >
        <Space>
@@ -61,6 +60,12 @@ function RestaurantList({ data, deleteItem, editItem }) {
      )
     })}
    </Space>
+   <DeleteConfirm
+    modalItem={modalItem}
+    isDeleteModalVisible={isDeleteModalVisible}
+    setIsDeleteModalVisible={setIsDeleteModalVisible}
+    deleteItem={deleteItem}
+   />
    <EditForm
     modalItem={modalItem}
     isEditModalVisible={isEditModalVisible}
