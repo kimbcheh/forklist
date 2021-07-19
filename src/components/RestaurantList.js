@@ -1,4 +1,5 @@
 import TypeEmoji from './TypeEmoji'
+import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
 import { useState } from 'react'
 import { Card, Popconfirm, Space, Tag } from 'antd'
@@ -61,6 +62,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
      )
     })}
    </Space>
+   <DeleteConfirm />
    <EditForm
     modalItem={modalItem}
     isEditModalVisible={isEditModalVisible}
