@@ -63,7 +63,12 @@ function RestaurantList({ data, deleteItem, editItem }) {
      )
     })}
    </Space>
-   <DeleteConfirm />
+   <DeleteConfirm
+    modalItem={modalItem}
+    isDeleteModalVisible={isDeleteModalVisible}
+    setIsDeleteModalVisible={setIsDeleteModalVisible}
+    deleteItem={deleteItem}
+   />
    <EditForm
     modalItem={modalItem}
     isEditModalVisible={isEditModalVisible}

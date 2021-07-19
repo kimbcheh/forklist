@@ -1,4 +1,9 @@
-function DeleteConfirm() {
+function DeleteConfirm({
+ modalItem,
+ isDeleteModalVisible,
+ setIsDeleteModalVisible,
+ deleteItem,
+}) {
  return (
   <div>
    <p>DeleteConfirm</p>
