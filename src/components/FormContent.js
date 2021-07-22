@@ -2,7 +2,7 @@ import { Button, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
-function FormContent({ onFinish }) {
+function FormContent({ onFinish, submitButton }) {
  const [form] = Form.useForm()
  return (
   <div>
@@ -89,11 +89,13 @@ function FormContent({ onFinish }) {
       placeholder='e.g. Michelle recommended the chocolate and sea salt brownie'
      />
     </Form.Item>
-    <Form.Item>
-     <Button type='primary' htmlType='submit'>
-      Submit
-     </Button>
-    </Form.Item>
+    {submitButton && (
+     <Form.Item>
+      <Button type='primary' htmlType='submit'>
+       Submit
+      </Button>
+     </Form.Item>
+    )}
    </Form>
   </div>
  )
