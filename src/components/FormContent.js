@@ -2,11 +2,30 @@ import { Button, Form, Input, Radio } from 'antd'
 
 const { TextArea } = Input
 
-function FormContent({ onFinish, submitButton, formName }) {
+function FormContent({
+ onFinish,
+ submitButton,
+ formName,
+ preserveForm,
+ initialValues,
+}) {
  const [form] = Form.useForm()
+
+ function onFormFinish(values) {
+  onFinish(values)
+  form.resetFields()
+ }
+
  return (
   <div>
-   <Form name={formName} form={form} layout='vertical' onFinish={onFinish}>
+   <Form
+    name={formName}
+    form={form}
+    layout='vertical'
+    onFinish={onFormFinish}
+    preserve={preserveForm}
+    initialValues={initialValues}
+   >
     <Form.Item
      label='Restaurant'
      name='restaurant'
