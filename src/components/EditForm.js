@@ -25,7 +25,6 @@ function EditForm({
    destroyOnClose
   >
    <FormContent
-    submitButton={true}
     formName='edit'
     preserveForm={false}
     initialValues={modalItem}

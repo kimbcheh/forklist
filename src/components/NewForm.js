@@ -11,7 +11,7 @@ function NewForm({ setData }) {
  return (
   <Card>
    <h2>Add a new restaurant</h2>
-   <FormContent onFinish={onFinish} submitButton={true} formName='new' />
+   <FormContent onFinish={onFinish} formName='new' />
   </Card>
  )
 }
