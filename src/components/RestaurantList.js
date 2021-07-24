@@ -2,7 +2,7 @@ import TypeEmoji from './TypeEmoji'
 import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
 import Filter from './Filter'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
@@ -10,6 +10,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
+ const [suburbList, setSuburbList] = useState(null)
 
  const showDeleteModal = (id) => {
   let dataItem = data.find((item) => item.id === id)
@@ -23,11 +24,19 @@ function RestaurantList({ data, deleteItem, editItem }) {
   setIsEditModalVisible(true)
  }
 
+ useEffect(() => {
+  const list = data.map((item) => {
+   return item.suburb
+  })
+  const uniqueList = [...new Set(list)]
+  setSuburbList(uniqueList)
+ }, [data])
+
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
-    <Filter startData={data} />
+    {suburbList && <Filter suburbList={suburbList} />}
     {data.map((item) => {
      return (
       <Card
