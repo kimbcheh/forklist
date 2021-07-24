@@ -40,6 +40,10 @@ function App() {
 
  const [data, setData] = useState([...placeholderData])
 
+ function newItem(newItemData) {
+  setData((prevData) => [...prevData, newItemData])
+ }
+
  function deleteItem(id) {
   const remainingItems = data.filter((item) => id !== item.id)
   setData(remainingItems)
@@ -63,7 +67,7 @@ function App() {
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
      <Col xs={24} lg={12} style={{ backgroundColor: 'pink' }}>
-      <NewForm setData={setData} />
+      <NewForm newItem={newItem} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
       <RestaurantList data={data} deleteItem={deleteItem} editItem={editItem} />
