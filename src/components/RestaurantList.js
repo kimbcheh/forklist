@@ -1,6 +1,7 @@
 import TypeEmoji from './TypeEmoji'
 import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
+import Filter from './Filter'
 import { useState } from 'react'
 import { Card, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
@@ -26,6 +27,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
+    <Filter startData={data} />
     {data.map((item) => {
      return (
       <Card
