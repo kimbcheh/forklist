@@ -2,11 +2,11 @@ import { nanoid } from 'nanoid'
 import FormContent from './FormContent'
 import { Card } from 'antd'
 
-function NewForm({ setData }) {
+function NewForm({ newItem }) {
  function onFinish(values) {
   values.id = nanoid(10)
   console.log(values)
-  setData((prevData) => [...prevData, values])
+  newItem(values)
  }
  return (
   <Card>
