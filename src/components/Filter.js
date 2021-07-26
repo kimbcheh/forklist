@@ -11,8 +11,8 @@ function Filter({ suburbList, setFilterCriteria }) {
  return (
   <div>
    <Form name='filter' onFinish={onFinish}>
-    <Form.Item label='Filter by suburb:' name='suburbFilter'>
-     <Select mode='multiple' allowClear style={{ width: '100%' }}>
+    <Form.Item label='Filter by suburb:' name='suburb'>
+     <Select allowClear style={{ width: '100%' }}>
       {suburbList.map((suburb) => {
        return (
         <Option value={suburb} key={suburb}>
