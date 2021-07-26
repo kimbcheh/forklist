@@ -11,6 +11,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
  const [suburbList, setSuburbList] = useState(null)
+ const [filterCriteria, setFilterCriteria] = useState()
 
  const showDeleteModal = (id) => {
   let dataItem = data.find((item) => item.id === id)
@@ -37,7 +38,9 @@ function RestaurantList({ data, deleteItem, editItem }) {
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
-    {suburbList && <Filter suburbList={suburbList} />}
+    {suburbList && (
+     <Filter suburbList={suburbList} setFilterCriteria={setFilterCriteria} />
+    )}
     {data.map((item) => {
      return (
       <Card

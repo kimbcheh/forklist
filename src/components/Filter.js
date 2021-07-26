@@ -1,13 +1,11 @@
 import { Button, Form, Select } from 'antd'
-import { useState } from 'react'
 
 const { Option } = Select
 
-function Filter({ suburbList }) {
- const [filterCriteria, setFilterCriteria] = useState()
-
+function Filter({ suburbList, setFilterCriteria }) {
  function onFinish(values) {
   console.log(values)
+  setFilterCriteria(values)
  }
 
  return (
