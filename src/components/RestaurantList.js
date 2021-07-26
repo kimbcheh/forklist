@@ -3,7 +3,7 @@ import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
 import Filter from './Filter'
 import { useEffect, useState } from 'react'
-import { Card, Space, Tag } from 'antd'
+import { Card, Empty, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem, editItem }) {
@@ -67,6 +67,18 @@ function RestaurantList({ data, deleteItem, editItem }) {
     <h2>Restaurant List</h2>
     {suburbList && (
      <Filter suburbList={suburbList} setFilterCriteria={setFilterCriteria} />
+    )}
+    {filterCriteria && (
+     <p style={{ fontStyle: 'italic' }}>
+      You're looking for:{' '}
+      {filterCriteria.type ? `${filterCriteria.type}` : 'A place'}{' '}
+      {filterCriteria.suburb ? `located in ${filterCriteria.suburb}` : ''}{' '}
+      {filterCriteria.price ? `in the ${filterCriteria.price} price range` : ''}
+      ...
+     </p>
+    )}
+    {filteredData.length < 1 && (
+     <Empty description={<span>Sorry no restaurants found!</span>} />
     )}
     {filteredData.map((item) => {
      return (
