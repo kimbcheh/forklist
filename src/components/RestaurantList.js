@@ -70,8 +70,10 @@ function RestaurantList({ data, deleteItem, editItem }) {
     )}
     {filterCriteria && (
      <p style={{ fontStyle: 'italic' }}>
-      You're looking for:{' '}
-      {filterCriteria.type ? `${filterCriteria.type}` : 'A place'}{' '}
+      You're looking for{' '}
+      {filterCriteria.type
+       ? `a ${filterCriteria.type.toLowerCase()}`
+       : 'a place'}{' '}
       {filterCriteria.suburb ? `located in ${filterCriteria.suburb}` : ''}{' '}
       {filterCriteria.price ? `in the ${filterCriteria.price} price range` : ''}
       ...
