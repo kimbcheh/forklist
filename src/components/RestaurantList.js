@@ -36,16 +36,27 @@ function RestaurantList({ data, deleteItem, editItem }) {
  }, [data])
 
  useEffect(() => {
+  function bySuburb(obj) {
+   if (!filterCriteria.suburb) {
+    return true
+   } else return obj.suburb === filterCriteria.suburb
+  }
+  function byType(obj) {
+   if (!filterCriteria.type) {
+    return true
+   } else return obj.type === filterCriteria.type
+  }
+  function byPrice(obj) {
+   if (!filterCriteria.price) {
+    return true
+   }
+   return obj.price === filterCriteria.price
+  }
   if (!filterCriteria) {
    setFilteredData(data)
    return
-  }
-  if (filterCriteria.suburb === undefined) {
-   setFilteredData(data)
   } else {
-   const filteredList = data.filter(
-    (item) => item.suburb === filterCriteria.suburb
-   )
+   let filteredList = data.filter(bySuburb).filter(byType).filter(byPrice)
    setFilteredData(filteredList)
   }
  }, [data, filterCriteria])
