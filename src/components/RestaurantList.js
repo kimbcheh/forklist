@@ -29,7 +29,8 @@ function RestaurantList({ data, deleteItem, editItem }) {
    return item.suburb
   })
   const uniqueList = [...new Set(list)]
-  setSuburbList(uniqueList)
+  const orderedList = uniqueList.sort()
+  setSuburbList(orderedList)
  }, [data])
 
  return (
