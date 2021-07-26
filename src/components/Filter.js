@@ -1,4 +1,4 @@
-import { Button, Form, Select } from 'antd'
+import { Button, Form, Radio, Select } from 'antd'
 
 const { Option } = Select
 
@@ -26,6 +26,21 @@ function Filter({ suburbList, setFilterCriteria }) {
        )
       })}
      </Select>
+    </Form.Item>
+    <Form.Item label='Filter by type' name='type'>
+     <Radio.Group>
+      <Radio value={'Restaurant'}>Restaurant</Radio>
+      <Radio value={'Cafe'}>Cafe</Radio>
+      <Radio value={'Bar'}>Bar</Radio>
+      <Radio value={'Dessert'}>Dessert</Radio>
+     </Radio.Group>
+    </Form.Item>
+    <Form.Item label='Filter by price' name='price'>
+     <Radio.Group>
+      <Radio value={'$'}>$</Radio>
+      <Radio value={'$$'}>$$</Radio>
+      <Radio value={'$$$'}>$$$</Radio>
+     </Radio.Group>
     </Form.Item>
     <Form.Item>
      <Button htmlType='submit' type='primary'>
