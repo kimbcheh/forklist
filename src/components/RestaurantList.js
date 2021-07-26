@@ -1,14 +1,18 @@
 import TypeEmoji from './TypeEmoji'
 import DeleteConfirm from './DeleteConfirm'
 import EditForm from './EditForm'
-import { useState } from 'react'
-import { Card, Space, Tag } from 'antd'
+import Filter from './Filter'
+import { useEffect, useState } from 'react'
+import { Card, Empty, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 function RestaurantList({ data, deleteItem, editItem }) {
  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
+ const [suburbList, setSuburbList] = useState(null)
+ const [filterCriteria, setFilterCriteria] = useState()
+ const [filteredData, setFilteredData] = useState(data)
 
  const showDeleteModal = (id) => {
   let dataItem = data.find((item) => item.id === id)
@@ -22,11 +26,63 @@ function RestaurantList({ data, deleteItem, editItem }) {
   setIsEditModalVisible(true)
  }
 
+ useEffect(() => {
+  const list = data.map((item) => {
+   return item.suburb
+  })
+  const uniqueList = [...new Set(list)]
+  const orderedList = uniqueList.sort()
+  setSuburbList(orderedList)
+ }, [data])
+
+ useEffect(() => {
+  function bySuburb(obj) {
+   if (!filterCriteria.suburb) {
+    return true
+   } else return obj.suburb === filterCriteria.suburb
+  }
+  function byType(obj) {
+   if (!filterCriteria.type) {
+    return true
+   } else return obj.type === filterCriteria.type
+  }
+  function byPrice(obj) {
+   if (!filterCriteria.price) {
+    return true
+   }
+   return obj.price === filterCriteria.price
+  }
+  if (!filterCriteria) {
+   setFilteredData(data)
+   return
+  } else {
+   let filteredList = data.filter(bySuburb).filter(byType).filter(byPrice)
+   setFilteredData(filteredList)
+  }
+ }, [data, filterCriteria])
+
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
     <h2>Restaurant List</h2>
-    {data.map((item) => {
+    {suburbList && (
+     <Filter suburbList={suburbList} setFilterCriteria={setFilterCriteria} />
+    )}
+    {filterCriteria && (
+     <p style={{ fontStyle: 'italic' }}>
+      You're looking for{' '}
+      {filterCriteria.type
+       ? `a ${filterCriteria.type.toLowerCase()}`
+       : 'a place'}{' '}
+      {filterCriteria.suburb ? `located in ${filterCriteria.suburb}` : ''}{' '}
+      {filterCriteria.price ? `in the ${filterCriteria.price} price range` : ''}
+      ...
+     </p>
+    )}
+    {filteredData.length < 1 && (
+     <Empty description={<span>Sorry no restaurants found!</span>} />
+    )}
+    {filteredData.map((item) => {
      return (
       <Card
        key={item.id}
