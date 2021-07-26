@@ -12,6 +12,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
  const [modalItem, setModalItem] = useState(data[0])
  const [suburbList, setSuburbList] = useState(null)
  const [filterCriteria, setFilterCriteria] = useState()
+ const [filteredData, setFilteredData] = useState(data)
 
  const showDeleteModal = (id) => {
   let dataItem = data.find((item) => item.id === id)
@@ -34,6 +35,21 @@ function RestaurantList({ data, deleteItem, editItem }) {
   setSuburbList(orderedList)
  }, [data])
 
+ useEffect(() => {
+  if (!filterCriteria) {
+   setFilteredData(data)
+   return
+  }
+  if (filterCriteria.suburb === undefined) {
+   setFilteredData(data)
+  } else {
+   const filteredList = data.filter(
+    (item) => item.suburb === filterCriteria.suburb
+   )
+   setFilteredData(filteredList)
+  }
+ }, [data, filterCriteria])
+
  return (
   <Card>
    <Space direction='vertical' style={{ width: '100%' }}>
@@ -41,7 +57,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
     {suburbList && (
      <Filter suburbList={suburbList} setFilterCriteria={setFilterCriteria} />
     )}
-    {data.map((item) => {
+    {filteredData.map((item) => {
      return (
       <Card
        key={item.id}
