@@ -9,7 +9,7 @@ const { Header, Content, Footer } = Layout
 function App() {
  let placeholderData = [
   {
-   restaurant: 'Bakemono Bakers',
+   name: 'Bakemono Bakers',
    suburb: 'CBD',
    type: 'Cafe',
    price: '$',
@@ -19,7 +19,7 @@ function App() {
    id: 'placeholder1',
   },
   {
-   restaurant: 'Marko',
+   name: 'Marko',
    suburb: 'South Melbourne',
    type: 'Restaurant',
    price: '$',
@@ -28,7 +28,7 @@ function App() {
    id: 'placeholder2',
   },
   {
-   restaurant: 'Aru',
+   name: 'Aru',
    suburb: 'CBD',
    type: 'Restaurant',
    price: '$$$',
