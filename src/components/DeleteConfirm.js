@@ -17,13 +17,13 @@ function DeleteConfirm({
 
  return (
   <Modal
-   title={`Delete: ${modalItem.restaurant}`}
+   title={`Delete: ${modalItem.name}`}
    visible={isDeleteModalVisible}
    onOk={handleDeleteOk}
    onCancel={handleDeleteCancel}
    okText='Confirm'
   >
-   <p>Are you sure you want to delete {modalItem.restaurant} from your list?</p>
+   <p>Are you sure you want to delete {modalItem.name} from your list?</p>
   </Modal>
  )
 }

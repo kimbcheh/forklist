@@ -18,7 +18,7 @@ function EditForm({
  }
  return (
   <Modal
-   title={`Edit: ${modalItem.restaurant}`}
+   title={`Edit: ${modalItem.name}`}
    visible={isEditModalVisible}
    onCancel={handleEditCancel}
    footer={null}

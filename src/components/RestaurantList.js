@@ -100,10 +100,10 @@ function RestaurantList({ data, deleteItem, editItem }) {
           target='_blank'
           rel='noopener noreferrer'
          >
-          {item.restaurant} &#x2197;
+          {item.name} &#x2197;
          </a>
         ) : (
-         <p style={{ fontWeight: 600, display: 'inline' }}>{item.restaurant}</p>
+         <p style={{ fontWeight: 600, display: 'inline' }}>{item.name}</p>
         )}
        </Space>
        <p style={{ fontStyle: 'italic' }}>{item.notes}</p>

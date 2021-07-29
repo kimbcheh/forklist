@@ -21,8 +21,8 @@ function FormContent({ onFinish, formName, preserveForm, initialValues }) {
     initialValues={initialValues}
    >
     <Form.Item
-     label='Restaurant'
-     name='restaurant'
+     label='Name'
+     name='name'
      rules={[
       { required: true, message: 'Please input the name of the restaurant!' },
       {
