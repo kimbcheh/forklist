@@ -39,6 +39,7 @@ function App() {
  ]
 
  const [data, setData] = useState([...placeholderData])
+ const [isLoading, setIsLoading] = useState(true)
 
  function newItem(newItemData) {
   setData((prevData) => [...prevData, newItemData])
@@ -70,7 +71,13 @@ function App() {
       <NewForm newItem={newItem} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      <RestaurantList data={data} deleteItem={deleteItem} editItem={editItem} />
+      {!isLoading && (
+       <RestaurantList
+        data={data}
+        deleteItem={deleteItem}
+        editItem={editItem}
+       />
+      )}
      </Col>
     </Row>
    </Content>
