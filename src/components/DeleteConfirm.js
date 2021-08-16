@@ -1,13 +1,18 @@
+import { useState } from 'react'
 import { Modal } from 'antd'
 
 function DeleteConfirm({
  modalItem,
  isDeleteModalVisible,
  setIsDeleteModalVisible,
- deleteItem,
+ deleteRestaurant,
 }) {
+ const [confirmDeleteLoading, setConfirmDeleteLoading] = useState(false)
+
  const handleDeleteOk = () => {
-  deleteItem(modalItem.id)
+  setConfirmDeleteLoading(true)
+  deleteRestaurant(modalItem.id)
+  setConfirmDeleteLoading(false)
   setIsDeleteModalVisible(false)
  }
 
@@ -22,6 +27,7 @@ function DeleteConfirm({
    onOk={handleDeleteOk}
    onCancel={handleDeleteCancel}
    okText='Confirm'
+   confirmLoading={confirmDeleteLoading}
   >
    <p>Are you sure you want to delete {modalItem.name} from your list?</p>
   </Modal>

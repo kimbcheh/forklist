@@ -75,10 +75,23 @@ function App() {
   }
  }
 
- //  function deleteItem(id) {
- //   const remainingItems = data.filter((item) => id !== item.id)
- //   setData(remainingItems)
- //  }
+ async function deleteRestaurant(id) {
+  try {
+   const response = await axios.delete(
+    'https://ap-southeast-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/forklist-oixeo/service/restaurants/incoming_webhook/rest-del',
+    { params: { id: id } }
+   )
+   setIsLoading(true)
+   console.log(response)
+   getRestaurants()
+  } catch (error) {
+   console.error(error)
+  }
+ }
+
+ function deleteItem(id) {
+  console.log(`mock deleted ${id}`)
+ }
 
  //  function editItem(id, editData) {
  //   const updatedItems = data.map((item) => {
@@ -110,7 +123,9 @@ function App() {
       )} */}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Sorry there's an error!</p>}
-      {!isLoading && !isError && <RestaurantList data={data} />}
+      {!isLoading && !isError && (
+       <RestaurantList data={data} deleteRestaurant={deleteRestaurant} />
+      )}
      </Col>
     </Row>
    </Content>
