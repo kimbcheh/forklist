@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import FormContent from './FormContent'
 import { Modal } from 'antd'
 
@@ -5,11 +6,16 @@ function EditForm({
  isEditModalVisible,
  setIsEditModalVisible,
  modalItem,
- editItem,
+ editRestaurant,
 }) {
+ const [confirmEditLoading, setConfirmEditLoading] = useState(false)
+
  function onFinish(values) {
+  setConfirmEditLoading(true)
+  values.id = modalItem.id
   console.log(values)
-  editItem(modalItem.id, values)
+  editRestaurant(values)
+  setConfirmEditLoading(false)
   setIsEditModalVisible(false)
  }
 
@@ -29,6 +35,7 @@ function EditForm({
     preserveForm={false}
     initialValues={modalItem}
     onFinish={onFinish}
+    loadingButton={confirmEditLoading}
    />
   </Modal>
  )
