@@ -6,19 +6,19 @@ import { useEffect, useState } from 'react'
 import { Card, Empty, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
-function RestaurantList({ data, deleteItem, editItem }) {
- //  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
+function RestaurantList({ data, deleteRestaurant, editItem }) {
+ const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
  //  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
- //  const [modalItem, setModalItem] = useState(data[0])
+ const [modalItem, setModalItem] = useState(data[0])
  //  const [suburbList, setSuburbList] = useState(null)
  //  const [filterCriteria, setFilterCriteria] = useState()
  //  const [filteredData, setFilteredData] = useState(data)
 
- //  const showDeleteModal = (id) => {
- //   let dataItem = data.find((item) => item.id === id)
- //   setModalItem(dataItem)
- //   setIsDeleteModalVisible(true)
- //  }
+ const showDeleteModal = (id) => {
+  let dataItem = data.find((item) => item.id === id)
+  setModalItem(dataItem)
+  setIsDeleteModalVisible(true)
+ }
 
  //  const showEditModal = (id) => {
  //   let dataItem = data.find((item) => item.id === id)
@@ -86,6 +86,7 @@ function RestaurantList({ data, deleteItem, editItem }) {
      return (
       <Card
        key={item.id}
+       actions={[<DeleteOutlined onClick={() => showDeleteModal(item.id)} />]}
        //    actions={[
        //     <EditOutlined onClick={() => showEditModal(item.id)} />,
        //     <DeleteOutlined onClick={() => showDeleteModal(item.id)} />,
@@ -112,13 +113,13 @@ function RestaurantList({ data, deleteItem, editItem }) {
      )
     })}
    </Space>
-   {/* <DeleteConfirm
+   <DeleteConfirm
     modalItem={modalItem}
     isDeleteModalVisible={isDeleteModalVisible}
     setIsDeleteModalVisible={setIsDeleteModalVisible}
-    deleteItem={deleteItem}
+    deleteRestaurant={deleteRestaurant}
    />
-   <EditForm
+   {/* <EditForm
     modalItem={modalItem}
     isEditModalVisible={isEditModalVisible}
     setIsEditModalVisible={setIsEditModalVisible}
