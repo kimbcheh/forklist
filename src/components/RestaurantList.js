@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react'
 import { Card, Empty, Space, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
-function RestaurantList({ data, deleteRestaurant, editItem }) {
+function RestaurantList({ data, deleteRestaurant, editRestaurant }) {
  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
- //  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+ const [isEditModalVisible, setIsEditModalVisible] = useState(false)
  const [modalItem, setModalItem] = useState(data[0])
  //  const [suburbList, setSuburbList] = useState(null)
  //  const [filterCriteria, setFilterCriteria] = useState()
@@ -20,11 +20,11 @@ function RestaurantList({ data, deleteRestaurant, editItem }) {
   setIsDeleteModalVisible(true)
  }
 
- //  const showEditModal = (id) => {
- //   let dataItem = data.find((item) => item.id === id)
- //   setModalItem(dataItem)
- //   setIsEditModalVisible(true)
- //  }
+ const showEditModal = (id) => {
+  let dataItem = data.find((item) => item.id === id)
+  setModalItem(dataItem)
+  setIsEditModalVisible(true)
+ }
 
  //  useEffect(() => {
  //   const list = data.map((item) => {
@@ -86,7 +86,10 @@ function RestaurantList({ data, deleteRestaurant, editItem }) {
      return (
       <Card
        key={item.id}
-       actions={[<DeleteOutlined onClick={() => showDeleteModal(item.id)} />]}
+       actions={[
+        <EditOutlined onClick={() => showEditModal(item.id)} />,
+        <DeleteOutlined onClick={() => showDeleteModal(item.id)} />,
+       ]}
        //    actions={[
        //     <EditOutlined onClick={() => showEditModal(item.id)} />,
        //     <DeleteOutlined onClick={() => showDeleteModal(item.id)} />,
@@ -119,12 +122,12 @@ function RestaurantList({ data, deleteRestaurant, editItem }) {
     setIsDeleteModalVisible={setIsDeleteModalVisible}
     deleteRestaurant={deleteRestaurant}
    />
-   {/* <EditForm
+   <EditForm
     modalItem={modalItem}
     isEditModalVisible={isEditModalVisible}
     setIsEditModalVisible={setIsEditModalVisible}
-    editItem={editItem}
-   /> */}
+    editRestaurant={editRestaurant}
+   />
   </Card>
  )
 }
