@@ -5,11 +5,12 @@ function EditForm({
  isEditModalVisible,
  setIsEditModalVisible,
  modalItem,
- editItem,
+ editRestaurant,
 }) {
  function onFinish(values) {
+  values.id = modalItem.id
   console.log(values)
-  editItem(modalItem.id, values)
+  editRestaurant(values)
   setIsEditModalVisible(false)
  }
 
