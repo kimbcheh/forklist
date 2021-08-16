@@ -93,18 +93,14 @@ function RestaurantList({ data, deleteItem, editItem }) {
       >
        <Space>
         <TypeEmoji type={item.type} />
-        {item.link ? (
-         <a
-          href={item.link}
-          style={{ fontWeight: 600, color: 'black' }}
-          target='_blank'
-          rel='noopener noreferrer'
-         >
-          {item.name} &#x2197;
-         </a>
-        ) : (
-         <p style={{ fontWeight: 600, display: 'inline' }}>{item.name}</p>
-        )}
+        <a
+         href={item.link}
+         style={{ fontWeight: 600, color: 'black' }}
+         target='_blank'
+         rel='noopener noreferrer'
+        >
+         {item.name} &#x2197;
+        </a>
        </Space>
        <p style={{ fontStyle: 'italic' }}>{item.notes}</p>
        <div>
