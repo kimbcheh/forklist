@@ -88,6 +88,7 @@ function FormContent({ onFinish, formName, preserveForm, initialValues }) {
      type='url'
      rules={[
       {
+       required: true,
        type: 'url',
        message: 'Please input a valid URL!',
       },
@@ -95,7 +96,7 @@ function FormContent({ onFinish, formName, preserveForm, initialValues }) {
     >
      <Input placeholder='e.g. http://napierquarter.com.au/' />
     </Form.Item>
-    <Form.Item label='Notes' name='notes'>
+    <Form.Item label='Notes' name='notes' rules={[{ required: true }]}>
      <TextArea
       showCount
       maxLength={100}
