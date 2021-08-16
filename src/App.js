@@ -8,37 +8,6 @@ import { Col, Layout, Row } from 'antd'
 const { Header, Content, Footer } = Layout
 
 function App() {
- //  let placeholderData = [
- //   {
- //    name: 'Bakemono Bakers',
- //    suburb: 'CBD',
- //    type: 'Cafe',
- //    price: '$',
- //    link: 'https://www.bakemonobakers.com.au/',
- //    notes:
- //     'Belinda recommended the garlic cream cheese bread and take home matcha latte kit',
- //    id: 'placeholder1',
- //   },
- //   {
- //    name: 'Marko',
- //    suburb: 'South Melbourne',
- //    type: 'Restaurant',
- //    price: '$',
- //    link: undefined,
- //    notes: undefined,
- //    id: 'placeholder2',
- //   },
- //   {
- //    name: 'Aru',
- //    suburb: 'CBD',
- //    type: 'Restaurant',
- //    price: '$$$',
- //    link: 'https://www.broadsheet.com.au/melbourne/restaurants/aru-dining',
- //    notes: 'Bianca recommended the dry aged duck and claypot rice',
- //    id: 'placeholder3',
- //   },
- //  ]
-
  const [data, setData] = useState([])
  const [isLoading, setIsLoading] = useState(true)
  const [isError, setIsError] = useState(false)
@@ -103,20 +72,6 @@ function App() {
   }
  }
 
- function deleteItem(id) {
-  console.log(`mock deleted ${id}`)
- }
-
- //  function editItem(id, editData) {
- //   const updatedItems = data.map((item) => {
- //    if (item.id === id) {
- //     return { ...editData, id: item.id }
- //    }
- //    return item
- //   })
- //   setData(updatedItems)
- //  }
-
  return (
   <Layout>
    <Header style={{ backgroundColor: '#fff' }}>
@@ -128,13 +83,6 @@ function App() {
       <NewForm addRestaurant={addRestaurant} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
-      {/* {!isLoading && (
-       <RestaurantList
-        data={data}
-        deleteItem={deleteItem}
-        editItem={editItem}
-       />
-      )} */}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Sorry there's an error!</p>}
       {!isLoading && !isError && (
