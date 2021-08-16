@@ -4,10 +4,10 @@ function DeleteConfirm({
  modalItem,
  isDeleteModalVisible,
  setIsDeleteModalVisible,
- deleteItem,
+ deleteRestaurant,
 }) {
  const handleDeleteOk = () => {
-  deleteItem(modalItem.id)
+  deleteRestaurant(modalItem.id)
   setIsDeleteModalVisible(false)
  }
 
