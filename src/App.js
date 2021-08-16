@@ -61,8 +61,18 @@ function App() {
   getRestaurants()
  }, [])
 
- function newItem(newItemData) {
-  setData((prevData) => [...prevData, newItemData])
+ async function addRestaurant(newItemData) {
+  try {
+   const response = await axios.post(
+    'https://ap-southeast-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/forklist-oixeo/service/restaurants/incoming_webhook/rest-add',
+    newItemData
+   )
+   setIsLoading(true)
+   console.log(response)
+   getRestaurants()
+  } catch (error) {
+   console.error(error)
+  }
  }
 
  //  function deleteItem(id) {
@@ -88,7 +98,7 @@ function App() {
    <Content style={{ backgroundColor: '#fff', padding: '0 50px' }}>
     <Row>
      <Col xs={24} lg={12} style={{ backgroundColor: 'pink' }}>
-      <NewForm newItem={newItem} />
+      <NewForm addRestaurant={addRestaurant} />
      </Col>
      <Col xs={24} lg={12} style={{ backgroundColor: 'orange' }}>
       {/* {!isLoading && (
